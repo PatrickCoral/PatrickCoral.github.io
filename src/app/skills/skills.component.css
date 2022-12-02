@@ -1,11 +1,18 @@
 .skills {
+	font-size: 3vh;
 	margin: 10vw;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 	gap: 1rem;
 	column-gap: 5vw;
 	background-color: #202020;
 	padding: 5vw;
+}
+
+@media (aspect-ratio: 0.7) {
+	.skills {
+		font-size: 5vw;
+	}
 }
 
 .skills::before {
@@ -30,7 +37,8 @@
 	height: 100vh;
 	width: 100vw;
 	background-image: url("/assets/background.svg");
-	background-size: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .dots {

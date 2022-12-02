@@ -6,3 +6,15 @@ main {
 	margin-left: 5vh;
 	background-color: #202020;
 }
+
+a {
+	font-size: 3vh;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+a:hover {
+	background: linear-gradient(-20deg, turquoise 0%, #ff00dd 100%);
+	background-clip: text;
+	color: transparent;
+}
