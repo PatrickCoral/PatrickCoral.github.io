@@ -1,0 +1,46 @@
+.skills {
+	margin: 10vw;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+}
+
+p {
+	position: relative;
+}
+
+p::before{
+	content: "";
+	position: absolute;
+	width: 0%;
+	height: 50%;
+	top: 25%;
+	right: 70%;
+	/* background-color: dodgerblue; */
+	border-radius: 1em;
+	border: solid #dcdcdc 0.2em;
+	background: linear-gradient(90deg,
+		#ff00dd 0%,
+		dodgerblue calc(var(--scale)/5 * 100%),
+		#dcdcdc calc(var(--scale)/5 * 100%),
+		#dcdcdc 100%
+	);
+	opacity: 0;
+	animation: animWidth 0.5s ease-in-out;
+	animation-delay: 3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes animWidth {
+	from {
+		opacity: 0;
+		width: 0;
+		right: 70%;
+	}
+	to {
+		opacity: 1;
+		width: 70%;
+		right: 0%;
+	}
+
+}

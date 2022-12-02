@@ -30,20 +30,42 @@
 	left: 25%;
 }
 
-.splash > * {
-	width: fit-content;
-	padding: 1em;
-}
-
 h1 {
+	overflow: hidden;
+	padding: 1em;
+	width: fit-content;
+	max-width: 100%;
 	background-color: #202020;
 	font-size: 3vh;
+	color: white;
+	transition: all 1s ease-in-out;
+	white-space: nowrap;
+}
+
+h1.hidden {
+	color: rgba(255, 255, 255, 0);
+	max-width: 0;
+	padding: 0;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.hi {
+	transition-delay: 0ms;
 }
 
 .name {
+	transition-delay: 300ms;
 	transform: translateX(-3vh) translateY(-30%);
 }
 
 .description {
+	transition-delay: 500ms;
 	transform: translateY(-60%);
+}
+
+span {
+	color: transparent;
+	background: linear-gradient(-20deg, turquoise 0%, #ff00dd 100%);
+	background-clip: text;
 }
