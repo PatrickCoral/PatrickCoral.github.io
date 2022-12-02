@@ -20,7 +20,7 @@
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background: linear-gradient(#00000000 50%, #131316 100%);
+	background: linear-gradient(#00000000 50%, #131316 90%);
 }
 
 .splash {
@@ -36,7 +36,7 @@ h1 {
 	width: fit-content;
 	max-width: 100%;
 	background-color: #202020;
-	font-size: 3vh;
+	font-size: 4vh;
 	color: white;
 	transition: all 1s ease-in-out;
 	white-space: nowrap;

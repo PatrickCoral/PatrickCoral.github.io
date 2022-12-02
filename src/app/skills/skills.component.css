@@ -3,44 +3,50 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
+	column-gap: 5vw;
+	background-color: #202020;
+	padding: 5vw;
 }
 
-p {
-	position: relative;
-}
-
-p::before{
+.skills::before {
+	z-index: -2;
 	content: "";
 	position: absolute;
-	width: 0%;
-	height: 50%;
-	top: 25%;
-	right: 70%;
-	/* background-color: dodgerblue; */
-	border-radius: 1em;
-	border: solid #dcdcdc 0.2em;
-	background: linear-gradient(90deg,
-		#ff00dd 0%,
-		dodgerblue calc(var(--scale)/5 * 100%),
-		#dcdcdc calc(var(--scale)/5 * 100%),
-		#dcdcdc 100%
-	);
-	opacity: 0;
-	animation: animWidth 0.5s ease-in-out;
-	animation-delay: 3s;
-	animation-fill-mode: forwards;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-image: url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+	background-size: cover;
+	filter: grayscale(0.5) brightness(0.9);
 }
 
-@keyframes animWidth {
-	from {
-		opacity: 0;
-		width: 0;
-		right: 70%;
-	}
-	to {
-		opacity: 1;
-		width: 70%;
-		right: 0%;
-	}
+.skills::after {
+	z-index: -1;
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-image: url("/assets/background.svg");
+	background-size: 100%;
+}
 
+.dots {
+	background: linear-gradient(-20deg, turquoise 0%, #ff00dd 100%);
+	background-clip: text;
+	transition: all 0.5s ease-in-out;
+	transition-delay: 500ms;
+}
+
+.material-symbols-outlined {
+	color: transparent;
+	--fill: 1;
+	font-variation-settings: "FILL" var(--fill), "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+.hidden {
+	opacity: 0;
+	translate: -100%;
 }

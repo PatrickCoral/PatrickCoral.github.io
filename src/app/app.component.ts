@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { timer } from 'rxjs';
+import { SkillsComponent } from './skills/skills.component';
 
 @Component({
 	selector: 'app-root',
@@ -9,11 +11,18 @@ export class AppComponent {
 	title = 'CV';
 	pages: Element[] = [];
 	currentPage: number = 0;
+	blockScroll: boolean = false;
+
+	@ViewChild(SkillsComponent)
+	child!: SkillsComponent;
 
 	clamp = (num: number, min: number, max: number) =>
 		Math.min(Math.max(num, min), max);
 
 	changePage(event: Event) {
+		if (this.blockScroll) return;
+		this.blockScroll = true;
+		timer(500).subscribe(() => (this.blockScroll = false));
 		if (event instanceof WheelEvent) {
 			if (event.deltaY > 0) {
 				this.currentPage += 1;
@@ -40,6 +49,9 @@ export class AppComponent {
 			} else {
 				page.classList.remove('hidden-top', 'hidden-bottom');
 			}
+			if (this.currentPage == 1) {
+				this.child.show();
+			}
 		}
 	}
 
@@ -50,4 +62,8 @@ export class AppComponent {
 		});
 		this.pages[this.currentPage].classList.remove('hidden-bottom');
 	}
+
+	// ngAfterViewInit() {
+	// 	this.child.show();
+	// }
 }

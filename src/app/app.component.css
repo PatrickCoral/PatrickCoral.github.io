@@ -1,7 +1,7 @@
 .sidebar {
 	position: absolute;
-    top: 0;
-    left: 0;
+	top: 0;
+	left: 0;
 	background-color: #131316;
 	height: 100vh;
 	width: 35vw;
@@ -18,7 +18,7 @@
 	justify-content: center;
 }
 
-li{
+li {
 	flex-grow: 1;
 	font-size: 3vh;
 	list-style: none;
@@ -26,7 +26,7 @@ li{
 	transition: all 0.2s ease-in-out;
 }
 
-li:hover{
+li:hover {
 	cursor: pointer;
 	font-size: 6vh;
 	color: white;
@@ -39,7 +39,9 @@ main {
 	overflow: hidden;
 }
 
-.profile, .skills{
+.profile,
+.skills,
+.contact {
 	position: absolute;
 	width: 100%;
 	height: 100%;
