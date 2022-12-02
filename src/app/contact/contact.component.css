@@ -1,0 +1,8 @@
+main {
+	height: 70vh;
+	width: fit-content;
+	padding: 5vh;
+	margin: 5vh auto;
+	margin-left: 5vh;
+	background-color: #202020;
+}
