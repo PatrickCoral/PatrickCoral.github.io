@@ -19,13 +19,13 @@ export class AppComponent {
 	}
 
 	easeFn(x: number): number {
-		return Math.min(x * x, 1);
+		return Math.min(x * x * x, 1);
 	}
 
 	@HostListener('window:scroll', ['$event'])
 	onScroll(event: Event) {
 		this.skillPage!.style.opacity = this.easeFn(
-			this.scrollPercentage(this.skillPage)
+			this.scrollPercentage(this.skillPage)*2
 		).toString();
 
 		this.scrollbar!.style.height = `${Math.min(

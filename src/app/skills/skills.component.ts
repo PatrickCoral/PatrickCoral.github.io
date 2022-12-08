@@ -6,13 +6,17 @@ import { Component, HostListener } from '@angular/core';
 	styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent {
-	svg?: HTMLElement;
-
-	@HostListener('window:scroll', ['$event'])
-	onScroll(event: Event){
-	}
+	observer: IntersectionObserver = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('shown');
+			}
+		}
+	});
 
 	ngOnInit() {
-		this.svg = document.getElementById('phone')??undefined;
+		document
+			.querySelectorAll('.animated')
+			.forEach((e) => this.observer.observe(e));
 	}
 }
