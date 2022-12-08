@@ -7,6 +7,17 @@
 	width: 35vw;
 }
 
+.scrollbar {
+	z-index: 100;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 0vh;
+	width: 1vw;
+	background-color: #ffffff30;
+	overflow: hidden;
+}
+
 .pages {
 	margin: 10vh 3vh;
 	padding: 0;
@@ -33,27 +44,6 @@ li:hover {
 	flex-grow: 1.5;
 }
 
-main {
-	height: 100vh;
-	position: relative;
-	overflow: hidden;
-}
-
-.profile,
-.skills,
-.contact {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	transition: all 0.3s ease-in-out;
-}
-
-.hidden-top {
-	transform: translateY(-100%);
-}
-
-.hidden-bottom {
-	transform: translateY(100%);
+#skills {
+	opacity: 0;
 }

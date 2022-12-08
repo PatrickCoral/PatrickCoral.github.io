@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
 	selector: 'app-skills',
@@ -6,9 +6,13 @@ import { Component } from '@angular/core';
 	styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent {
-	show() {
-		document.querySelectorAll('.hidden').forEach((el) => {
-			el.classList.remove('hidden');
-		});
+	svg?: HTMLElement;
+
+	@HostListener('window:scroll', ['$event'])
+	onScroll(event: Event){
+	}
+
+	ngOnInit() {
+		this.svg = document.getElementById('phone')??undefined;
 	}
 }
