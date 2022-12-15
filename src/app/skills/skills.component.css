@@ -25,7 +25,9 @@
 }
 
 .cards > p {
-	font-size: min(2vh, 3vw);
+	font-size: min(3vh, 3vw);
+	font-family: 'Exo 2', sans-serif;
+	font-weight: 200;
 }
 
 .angular-card::before {
@@ -53,15 +55,15 @@
 }
 
 #angular {
-	animation-delay: 1s;
+	animation-delay: 0.2s;
 }
 
 #flutter {
-	animation-delay: 1.1s;
+	animation-delay: 0.3s;
 }
 
 #firebase {
-	animation-delay: 1.2s;
+	animation-delay: 0.4s;
 }
 
 .shown {
@@ -80,4 +82,20 @@
 		transform: translateX(0) translateY(0);
 		opacity: 1;
 	}
+}
+
+.software {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-top: 1em;
+	width: fit-content;
+}
+
+.logos {
+	padding: 1em;
+}
+
+.logos > img {
+	height: 10vh;
+	aspect-ratio: 1;
 }

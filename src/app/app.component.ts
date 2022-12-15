@@ -25,7 +25,7 @@ export class AppComponent {
 	@HostListener('window:scroll', ['$event'])
 	onScroll(event: Event) {
 		this.skillPage!.style.opacity = this.easeFn(
-			this.scrollPercentage(this.skillPage)*2
+			this.scrollPercentage(this.skillPage) * 2
 		).toString();
 
 		this.scrollbar!.style.height = `${Math.min(
@@ -39,5 +39,12 @@ export class AppComponent {
 	ngOnInit() {
 		this.skillPage = document.getElementById('skills') ?? undefined;
 		this.scrollbar = document.getElementById('scrollbar') ?? undefined;
+		let delay: number = 0.0;
+		document.querySelectorAll('.icon').forEach((e) => {
+			if (e instanceof HTMLElement) {
+				e.style.animationDelay = `${delay}s`
+				delay += 0.2;
+			}
+		});
 	}
 }
