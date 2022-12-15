@@ -18,26 +18,53 @@
 	overflow: hidden;
 }
 
-.pages {
-	margin: 10vh 3vh;
-	padding: 0;
+.links {
+	margin: 3vh;
 	width: fit-content;
-	height: 10%;
-	display: flex;
-	flex-direction: column;
-	transition: all 0.2s ease-in-out;
-	justify-content: center;
+	display: grid;
+	justify-items: center;
 }
 
-li {
+.icon {
+	padding: 0.1em;
+	font-size: 5vh;
+	color: #505050;
+	background: linear-gradient(-20deg, turquoise 0%, #ff00dd 100%);
+	background-clip: text;
+	transition: color 0.3s ease-in-out;
+	transform: translateX(-300%);
+	animation: comeIn 1s ease-in-out forwards;
+}
+
+.icon:hover {
+	color: transparent;
+	cursor: pointer;
+}
+
+@keyframes comeIn {
+	0% {
+		transform: translateX(-300%);
+		opacity: 0;
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
+
+li, a {
 	flex-grow: 1;
 	font-size: 3vh;
 	list-style: none;
+	text-decoration: none;
 	color: gray;
 	transition: all 0.2s ease-in-out;
 }
 
-li:hover {
+li:hover,a:hover {
 	cursor: pointer;
 	font-size: 6vh;
 	color: white;
