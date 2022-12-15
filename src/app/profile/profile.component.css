@@ -36,7 +36,7 @@ h1 {
 	width: fit-content;
 	max-width: 100%;
 	background-color: #202020;
-	font-size: 4vh;
+	font-size: min(4vw,4vh);
 	color: white;
 	transition: all 1s ease-in-out;
 	white-space: nowrap;

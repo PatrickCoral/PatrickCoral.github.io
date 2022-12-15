@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
 	selector: 'app-skills',
@@ -6,9 +6,17 @@ import { Component } from '@angular/core';
 	styleUrls: ['./skills.component.css'],
 })
 export class SkillsComponent {
-	show() {
-		document.querySelectorAll('.hidden').forEach((el) => {
-			el.classList.remove('hidden');
-		});
+	observer: IntersectionObserver = new IntersectionObserver((entries) => {
+		for (const entry of entries) {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('shown');
+			}
+		}
+	});
+
+	ngOnInit() {
+		document
+			.querySelectorAll('.animated')
+			.forEach((e) => this.observer.observe(e));
 	}
 }
