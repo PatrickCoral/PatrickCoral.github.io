@@ -99,3 +99,19 @@
 	height: 10vh;
 	aspect-ratio: 1;
 }
+
+.room {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1;
+	mask-image: linear-gradient(#000000, #000000);
+}
+
+.room::after{
+	z-index: 100;
+	position: absolute;
+	content: "ye";
+	height: 100%;
+	width: 100%;
+	background-color: #000000;
+}
