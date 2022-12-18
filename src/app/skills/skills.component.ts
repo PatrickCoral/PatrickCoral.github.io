@@ -5,6 +5,7 @@ import {
 	DirectionalLight,
 	DirectionalLightHelper,
 	Mesh,
+	MeshMatcapMaterial,
 	MeshNormalMaterial,
 	MeshStandardMaterial,
 	MeshToonMaterial,
@@ -57,11 +58,13 @@ export class SkillsComponent {
 	renderPass: RenderPass | undefined;
 	SMAAPass: SMAAPass = new SMAAPass(1, 1);
 
+	readonly icoGeo = new THREE.IcosahedronGeometry(5, 0);
+	readonly toonMat: MeshToonMaterial = new MeshToonMaterial({ color: 0x40e0d0 });
+	readonly mat = new MeshMatcapMaterial({color: 0xed37fa});
+	readonly icoSphere = new THREE.Mesh(this.icoGeo, this.mat)
+	
+
 	readonly coneGeometry: ConeGeometry = new ConeGeometry(0.5, 2);
-	readonly material: MeshStandardMaterial = new MeshStandardMaterial({
-		color: 0xffffff,
-	});
-	readonly mat: MeshToonMaterial = new MeshToonMaterial({ color: 0x40e0d0 });
 	readonly normalMat: MeshNormalMaterial = new MeshNormalMaterial();
 
 	readonly dirLight: DirectionalLight = new DirectionalLight(0xffffff);
@@ -94,12 +97,11 @@ export class SkillsComponent {
 
 			let vehicle: YUKA.Vehicle = new YUKA.Vehicle();
 			vehicle.setRenderComponent(cone, this.sync);
-			vehicle.position.x = 10 - Math.random() * 20;
-			vehicle.position.y = 10 - Math.random() * 20;
-			vehicle.position.z = 10 - Math.random() * 20;
-			vehicle.rotation.x = Math.PI * 2 - Math.random() * 4 * Math.PI;
-			vehicle.rotation.y = Math.PI * 2 - Math.random() * 4 * Math.PI;
-			vehicle.rotation.z = Math.PI * 2 - Math.random() * 4 * Math.PI;
+			vehicle.rotation.fromEuler(
+				Math.PI * 2 - Math.random() * 4 * Math.PI,
+				Math.PI * 2 - Math.random() * 4 * Math.PI,
+				Math.PI * 2 - Math.random() * 4 * Math.PI
+			)
 			this.entityManager.add(vehicle);
 			vehicle.steering.add(this.wanderBehavior);
 			vehicle.smoother = new YUKA.Smoother(50);
@@ -123,11 +125,12 @@ export class SkillsComponent {
 		this.pCamera.position.setY(30);
 		this.pCamera.rotateX(-Math.PI / 2);
 
-		this.dirLight.position.set(-5, 5, 5);
+		this.dirLight.position.set(-5, 5, -5);
 
+		this.scene.add(this.icoSphere);
 		this.scene.background = new THREE.Color(0x131316);
 
-		this.createBoids(50);
+		this.createBoids(100);
 
 		this.composer = new EffectComposer(this.renderer);
 		this.renderPass = new RenderPass(this.scene, this.pCamera);
@@ -156,6 +159,7 @@ export class SkillsComponent {
 		let delta = this.time.update().getDelta();
 		this.entityManager.update(delta*10);
 		this.updateSteeringBehavior();
+		this.icoSphere.rotateZ(delta);
 		window.requestAnimationFrame(this.animate);
 		this.composer?.render();
 	};
