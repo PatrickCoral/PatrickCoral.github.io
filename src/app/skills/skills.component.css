@@ -1,5 +1,5 @@
 .skill-page {
-	padding: 0 7vw;
+	/* padding: 0 7vw; */
 	display: grid;
 	gap: 3vh 3vw;
 	height: 100vh;
@@ -10,7 +10,18 @@
 	.skill-page {
 		grid-template-columns: 1fr 1fr;
 	}
+	.cards,.creative {
+		width: 100%;
+	}
+}
 
+@media (max-aspect-ratio: 0.7) {
+	.cards > h1 {
+		margin: auto;
+		padding: 0;
+		width: 100%;
+		justify-self: center;
+	}
 }
 
 .cards {
@@ -20,15 +31,54 @@
 
 .cards > h1,
 .cards > h1 > span {
+	white-space: nowrap;
 	font-family: "Abel", sans-serif;
-	font-size: min(10vh, 10vw);
+	font-size: min(10vh, 20vw);
 	margin-bottom: 0.2em;
+	width: fit-content;
 }
 
 .cards > p {
-	font-size: max(2vh, 3vw);
-	font-family: 'Exo 2', sans-serif;
+	font-size: min(3vh, 4vw);
+	font-family: "Exo 2", sans-serif;
 	font-weight: 200;
+	width: fit-content;
+}
+
+.flexible {
+	gap: 1em;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.flexible > h1,
+.flexible > p {
+	grid-column: span 3;
+}
+
+.languages {
+	text-align: center;
+	font-size: min(2vh, 4vw);
+	color: #505050;
+	transition: all 0.3s ease-in-out;
+}
+
+.languages:hover {
+	scale: 1.1;
+	color: white;
+	cursor: default;
+}
+
+.creative {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.creative > h1,
+.creative > p {
+	grid-column: span 3;
+}
+
+.creative > .logos {
+	justify-self: center;
 }
 
 .angular-card::before {
@@ -53,6 +103,17 @@
 #flutter,
 #firebase {
 	opacity: 0;
+}
+
+@media (min-aspect-ratio: 0.7) {
+	#angular,
+	#flutter,
+	#firebase {
+		opacity: 1;
+	}
+	.shown {
+		animation: none;
+	}
 }
 
 #angular {
@@ -86,6 +147,7 @@
 }
 
 .software {
+	justify-self: center;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	margin-top: 1em;

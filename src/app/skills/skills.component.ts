@@ -86,7 +86,7 @@ export class SkillsComponent {
 		if (this.canvas === undefined || this.container === undefined) return;
 
 		this.camera = new THREE.PerspectiveCamera(
-			50,
+			55,
 			this.container.clientWidth / this.container.clientHeight
 		);
 
@@ -105,7 +105,7 @@ export class SkillsComponent {
 
 		this.path.loop = true;
 
-		this.createLoop(5);
+		this.createLoop(10);
 
 		this.coneGeo.rotateX(Math.PI / 2);
 
@@ -129,8 +129,6 @@ export class SkillsComponent {
 	@HostListener('window:resize', ['$event'])
 	onResize() {
 		if (this.container === undefined || this.camera === undefined) return;
-		console.log('ping');
-
 		this.camera.aspect =
 			this.container?.clientWidth / this.container?.clientHeight;
 		this.camera.updateProjectionMatrix();

@@ -23,6 +23,14 @@
 	width: fit-content;
 	display: grid;
 	justify-items: center;
+	grid-template-columns: 1fr 1fr;
+}
+
+@media (max-aspect-ratio: 0.7) {
+	.links {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
 }
 
 .icon {
@@ -53,25 +61,4 @@
 		transform: translateY(0%);
 		opacity: 1;
 	}
-}
-
-li, a {
-	flex-grow: 1;
-	font-size: 3vh;
-	list-style: none;
-	text-decoration: none;
-	color: gray;
-	transition: all 0.2s ease-in-out;
-}
-
-li:hover,a:hover {
-	cursor: pointer;
-	font-size: 6vh;
-	color: white;
-	flex-grow: 1.5;
-}
-
-#skills {
-	opacity: 0;
-	margin-bottom: 20vh;
 }
