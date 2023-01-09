@@ -1,3 +1,8 @@
+main {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+}
+
 .skill-page {
 	/* padding: 0 7vw; */
 	display: grid;
@@ -10,7 +15,8 @@
 	.skill-page {
 		grid-template-columns: 1fr 1fr;
 	}
-	.cards,.creative {
+	.cards,
+	.creative {
 		width: 100%;
 	}
 }
@@ -27,6 +33,7 @@
 .cards {
 	display: grid;
 	padding: 4vw;
+	width: 50%;
 }
 
 .cards > h1,
@@ -81,39 +88,10 @@
 	justify-self: center;
 }
 
-.angular-card::before {
-	z-index: 0;
-	position: absolute;
-	content: "";
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 100%;
-	mask-image: url(/assets/logo-angular.svg);
-	mask-position: 50% 50%;
-	mask-size: contain;
-	mask-repeat: no-repeat;
-	background-color: #202020;
-	background-size: contain;
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-}
-
 #angular,
 #flutter,
 #firebase {
 	opacity: 0;
-}
-
-@media (min-aspect-ratio: 0.7) {
-	#angular,
-	#flutter,
-	#firebase {
-		opacity: 1;
-	}
-	.shown {
-		animation: none;
-	}
 }
 
 #angular {
@@ -189,4 +167,29 @@
 .container3D {
 	width: 100%;
 	aspect-ratio: 1;
+}
+
+#Maze {
+	transform: translateX(70%) skewX(-15deg) rotate(30deg) scale(1);
+}
+
+#Solution {
+	--len: 1770.752;
+	--lentwice: 3541.505;
+	stroke-dasharray: var(--len) var(--len);
+	/* stroke-dasharray: 100 100; */
+	/* stroke-dashoffset: var(--len); */
+	animation: strokeAnim 5s ease-in-out infinite ;
+}
+
+@keyframes strokeAnim {
+	0% {
+		stroke-dashoffset: var(--lentwice);
+	}
+	50% {
+		stroke-dashoffset: var(--len);
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
 }
