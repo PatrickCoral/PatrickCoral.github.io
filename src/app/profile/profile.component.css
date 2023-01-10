@@ -1,6 +1,7 @@
 .hero {
 	height: 100vh;
 	position: relative;
+	display: grid;
 }
 
 .hero::before {
@@ -25,14 +26,16 @@
 
 .splash {
 	z-index: 1;
-	position: absolute;
+	/* position: absolute;
 	top: 25%;
-	left: 25%;
+	right: 5%; */
+	justify-self: center;
+	align-self: center;
 }
 
-@media (max-aspect-ratio: 0.7) {
+@media (min-aspect-ratio: 0.7) {
 	.splash {
-		left: 10%;
+		left: 25%;
 	}
 }
 
@@ -98,4 +101,5 @@ span {
 	font-family: 'Exo 2', sans-serif;
 	font-size: 3vh;
 	font-weight: 200;
+	text-align: justify;
 }
