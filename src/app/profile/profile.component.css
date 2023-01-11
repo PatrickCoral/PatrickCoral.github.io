@@ -26,13 +26,11 @@
 
 .splash {
 	z-index: 1;
-	/* position: absolute;
-	top: 25%;
-	right: 5%; */
 	justify-self: center;
 	align-self: center;
 }
 
+/* Desktop version */
 @media (min-aspect-ratio: 0.7) {
 	.splash {
 		left: 25%;

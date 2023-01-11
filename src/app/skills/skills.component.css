@@ -10,17 +10,19 @@ main {
 
 p {
 	text-align: justify;
+	text-indent: 2em;
+	margin-top: 2em;
 }
 
 .cards {
 	display: grid;
 	grid-template-rows: 3fr 3fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
+	padding: 3vh;
 }
 
 .cards > h1, .cards > p {
 	grid-column: span 3;
-	padding: 0.7em;
 }
 
 .cards > h1 {
@@ -29,12 +31,19 @@ p {
 
 .cards > p {
 	font-size: 5vw;
-	margin: 1em 1em;
 }
 
 .languages {
+	color: #505050;
+	font-size: 5vw;
 	justify-self: center;
 	align-self: center;
+	transition: all 0.3s ease-in-out;
+}
+
+.languages:hover {
+	color: white;
+	scale: 1.5;
 }
 
 .logos {
@@ -80,6 +89,50 @@ p {
 	grid-row: span 3;
 }
 
+.problem {
+	grid-template-rows: 1fr 1fr;
+}
+
 .maze > svg{
 	width: 100%;
+}
+
+/* Desktop version */
+@media (min-aspect-ratio: 0.7) {
+	.skill-page {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.cards {
+		grid-template-rows: 2fr 2fr 1fr 1fr;
+	}
+
+	.cards > h1 {
+		font-size: 10vh;
+	}
+	
+	.cards > p {
+		font-size: 2vh;
+	}
+
+	.languages {
+		font-size: 3vh;
+	}
+
+	.creative > p {
+		grid-row: unset;
+		grid-column: span 3;
+	}
+
+	.container3D {
+		width: unset;
+		position: unset;
+		z-index: unset;
+		filter: unset;
+	}
+
+	.logos > img {
+		width: 80%;
+	}
 }
