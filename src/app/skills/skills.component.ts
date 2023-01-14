@@ -25,6 +25,18 @@ export class SkillsComponent {
 
 	readonly path = new YUKA.Path();
 
+	isDrawing: boolean = false;
+	iter: number = 3;
+	axiom: string = 'A';
+	readonly ruleA = '+BF-AFA-FB+';
+	readonly ruleB = '-AF+BFB+FA-';
+	readonly angles: [x: number, y: number][] = [
+		[1, 0],
+		[0, 1],
+		[-1, 0],
+		[0, -1],
+	];
+
 	createPoint(range: number) {
 		return new YUKA.Vector3(
 			range / 2 - Math.random() * range,
@@ -147,10 +159,126 @@ export class SkillsComponent {
 		}
 	});
 
+	iteration(axiom: string): string {
+		this.iter--;
+		var newString = '';
+		for (let index = 0; index < axiom.length; index++) {
+			const char = axiom.charAt(index);
+			if (char == 'A') {
+				newString += this.ruleA;
+			} else if (char == 'B') {
+				newString += this.ruleB;
+			} else {
+				newString += char;
+			}
+		}
+
+		if (this.iter == 0) {
+			return newString;
+		}
+
+		return this.iteration(newString);
+	}
+
+	parseInstructions(instructions: string): string {
+		var newString = '';
+		for (let index = 0; index < instructions.length; index++) {
+			let char = instructions.charAt(index);
+			if (char != 'A' && char != 'B') {
+				newString += char;
+			}
+		}
+
+		return newString;
+	}
+
+	mulTuples = (
+		[x, y]: [x: number, y: number],
+		[a, b]: [a: number, b: number]
+	): [x: number, y: number] => {
+		return [x * a, y * b];
+	};
+
+	addTuples = (
+		[x, y]: [x: number, y: number],
+		[a, b]: [a: number, b: number]
+	): [x: number, y: number] => {
+		return [x + a, y + b];
+	};
+
+	sleep(ms: number) {
+		return new Promise((resolve) => setTimeout(resolve, ms));
+	}
+
+	async draw(
+		context: CanvasRenderingContext2D,
+		stepSize: number,
+		instructions: string
+	) {
+		this.isDrawing = true;
+		let pos: [x: number, y: number] = [0, 0];
+		let angle = 0;
+		const steps: [x: number, y: number] = [stepSize, stepSize];
+
+		context.beginPath();
+		context.moveTo(...pos);
+
+		for (let index = 0; index < instructions.length; index++) {
+			const char = instructions.charAt(index);
+			if (char == '+') {
+				angle = (4 + angle + 1) % 4;
+			} else if (char == '-') {
+				angle = (4 + angle - 1) % 4;
+			} else if (char == 'F') {
+				pos = this.addTuples(
+					pos,
+					this.mulTuples(steps, this.angles[angle])
+				);
+				context.lineTo(...pos);
+				if (index % 1 == 0) {
+					context.stroke();
+					await this.sleep(40);
+				}
+			}
+		}
+		context.stroke();
+		this.isDrawing = false;
+	}
+
+	setupCanvas(canvas: HTMLElement | undefined){
+		if (!(canvas instanceof HTMLCanvasElement)) return;
+		let width = canvas.clientWidth;
+		let height = canvas.clientHeight;
+		let stepSize = Math.min(width * 0.9, height * 0.9);
+		canvas.width = width;
+		canvas.height = height;
+		const ctx = canvas.getContext('2d') ?? undefined;
+		if (ctx == undefined) return;
+		ctx.translate((width - stepSize) / 2, 0);
+		ctx.translate(0, (height - stepSize) / 2);
+		ctx.strokeStyle = '#ffffff';
+		ctx.lineWidth = 10;
+		ctx.lineCap = "square";
+		stepSize = stepSize / (Math.pow(2, this.iter) - 1);
+
+		let instructions = this.parseInstructions(this.iteration(this.axiom));
+
+		this.draw(ctx, stepSize, instructions);
+
+		setInterval(() => {
+			if (this.isDrawing) return;
+			ctx.clearRect(-width, -height, width*2, height*2);
+			this.draw(ctx, stepSize, instructions);
+		}, 5000)
+	}
+
 	ngOnInit() {
 		const canvas = document.getElementById('room') ?? undefined;
+		const hilbert = document.getElementById('hilbert') ?? undefined;
+
+		this.setupCanvas(hilbert);
 		if (canvas instanceof HTMLCanvasElement) this.canvas = canvas;
-		this.container = document.getElementById('container3D')??undefined;
+		this.container = document.getElementById('container3D') ?? undefined;
 
 		document
 			.querySelectorAll('.animated')

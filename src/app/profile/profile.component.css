@@ -71,12 +71,6 @@
 	transform: translateY(-60%);
 }
 
-span {
-	color: transparent;
-	background: linear-gradient(-20deg, #40e0d0 0%, #ff00dd 100%);
-	background-clip: text;
-}
-
 .presentation {
 	width: 100%;
 	height: fit-content;

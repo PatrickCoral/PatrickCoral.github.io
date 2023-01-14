@@ -1,3 +1,11 @@
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 main {
 	margin-top: 10vh;
 	display: grid;
@@ -11,12 +19,12 @@ main {
 p {
 	text-align: justify;
 	text-indent: 2em;
-	margin-top: 2em;
+	margin: 2em 0;
 }
 
 .cards {
 	display: grid;
-	grid-template-rows: 3fr 3fr 1fr 1fr;
+	grid-template-rows: 2fr 3fr 1fr 1fr;
 	grid-template-columns: 1fr 1fr 1fr;
 	padding: 3vh;
 }
@@ -33,17 +41,33 @@ p {
 	font-size: 5vw;
 }
 
-.languages {
-	color: #505050;
-	font-size: 5vw;
-	justify-self: center;
-	align-self: center;
+.languages > * {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	transition: all 0.3s ease-in-out;
 }
 
-.languages:hover {
+.languages > h3 {
+	color: #505050;
+	font-size: 5vw;
+}
+
+.languages > h4 {
+	font-size: 3vw;
+	opacity: 0;
+	transform: translateY(-100%);
+}
+
+.languages:hover > h3{
 	color: white;
 	scale: 1.5;
+}
+
+.languages:hover > h4 {
+	opacity: 1;
+	transform: translateY(50%);
 }
 
 .logos {
@@ -90,22 +114,35 @@ p {
 }
 
 .problem {
-	grid-template-rows: 1fr 1fr;
+	grid-template-rows: 1fr 2fr !important;
 }
 
-.maze > svg{
+#hilbert {
+	box-sizing: border-box;
+	height: 100%;
 	width: 100%;
+	padding: 2vw;
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+	
 }
 
 /* Desktop version */
-@media (min-aspect-ratio: 0.7) {
+@media (min-aspect-ratio: 1/1) {
 	.skill-page {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 	}
 
 	.cards {
-		grid-template-rows: 2fr 2fr 1fr 1fr;
+		grid-template-rows: 1fr 2fr 1fr 1fr;
 	}
 
 	.cards > h1 {
@@ -114,10 +151,27 @@ p {
 	
 	.cards > p {
 		font-size: 2vh;
+		padding: 0 2em;
 	}
 
-	.languages {
-		font-size: 3vh;
+	.languages > h3 {
+		font-size: 2.5vw;
+	}
+	
+	.languages > h4 {
+		font-size: 1.5vw;
+	}
+
+	.flexible {
+		grid-template-rows: 2fr 3fr 1fr 1fr;
+	}
+
+	.flexible:hover > .languages:not(:hover) > h3{
+		color: #202020;
+	}
+
+	.creative {
+		grid-template-rows: 1fr 1fr 1fr 1fr;
 	}
 
 	.creative > p {
@@ -134,5 +188,9 @@ p {
 
 	.logos > img {
 		width: 80%;
+	}
+
+	.problem {
+		grid-template-rows: 1fr 1fr !important;
 	}
 }
