@@ -2,9 +2,17 @@
 	rel="stylesheet"
 	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
 <main>
 	<section id="flexible" class="skill-page">
-		<div class="cards flexible">
+		<div id="flexCard" class="cards flexible">
 			<h1>
 				<span
 					style="display: inline-block; transform: translateY(0.3em)"
@@ -18,12 +26,54 @@
 				I have experience working with diverse frameworks and languages
 				and I am always willing to learn more.
 			</p>
-			<h3 class="languages">JS/TS</h3>
-			<h3 class="languages">Dart</h3>
-			<h3 class="languages">Rust</h3>
-			<h3 class="languages">Java</h3>
-			<h3 class="languages">C++</h3>
-			<h3 class="languages">Python</h3>
+			<div class="languages">
+				<h3>JS/TS</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_checked radio_button_checked
+					radio_button_unchecked
+				</h4>
+			</div>
+			<div class="languages">
+				<h3>Dart</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_checked radio_button_checked
+					radio_button_unchecked
+				</h4>
+			</div>
+			<div class="languages">
+				<h3>Rust</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_unchecked radio_button_unchecked
+					radio_button_unchecked
+				</h4>
+			</div>
+			<div class="languages">
+				<h3>Java</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_checked radio_button_unchecked
+					radio_button_unchecked
+				</h4>
+			</div>
+			<div class="languages">
+				<h3>C++</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_checked radio_button_unchecked
+					radio_button_unchecked
+				</h4>
+			</div>
+			<div class="languages">
+				<h3>Python</h3>
+				<h4 class="material-symbols-outlined highlight">
+					radio_button_checked radio_button_checked
+					radio_button_unchecked radio_button_unchecked
+					radio_button_unchecked
+				</h4>
+			</div>
 		</div>
 
 		<div
@@ -140,7 +190,11 @@
 	<section id="creative" class="skill-page">
 		<div class="cards creative">
 			<h1>
-				<span style="font-family: 'Dancing Script', cursive"
+				<span
+					style="
+						font-family: 'Dancing Script', cursive;
+						text-shadow: 0 0 0.1em deeppink;
+					"
 					>Creative</span
 				>
 			</h1>
@@ -165,6 +219,27 @@
 
 		<div id="container3D" class="container3D">
 			<canvas id="room" class="room"></canvas>
+		</div>
+	</section>
+	<section id="problem" class="skill-page">
+		<div class="cards problem">
+			<h1>
+				<span>Problem<br />Solver</span>
+			</h1>
+			<p>
+				I am a
+				<b class="highlight">highly effective problem-solver</b> with a
+				track record of finding creative solutions to complex issues. I
+				have experience troubleshooting and debugging code, and am
+				skilled at identifying the root cause of problems and
+				<b class="highlight">implementing effective solutions</b>. My
+				strong problem-solving skills have helped me to deliver
+				high-quality products and achieve success in my projects.
+			</p>
+		</div>
+
+		<div class="lSystem">
+			<canvas id="hilbert"></canvas>
 		</div>
 	</section>
 </main>
