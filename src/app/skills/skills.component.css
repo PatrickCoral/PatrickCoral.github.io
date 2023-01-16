@@ -10,6 +10,7 @@ main {
 	margin-top: 10vh;
 	display: grid;
 	row-gap: 10vh;
+	padding: 0 3vw;
 }
 
 .skill-page {
@@ -24,7 +25,7 @@ p {
 
 .cards {
 	display: grid;
-	grid-template-rows: 2fr 3fr 1fr 1fr;
+	grid-template-rows: repeat(4,fit-content(25vh));
 	grid-template-columns: 1fr 1fr 1fr;
 	padding: 3vh;
 }
@@ -37,7 +38,7 @@ p {
 	font-size: 15vw;
 }
 
-.cards > p {
+.cards > p{
 	font-size: 5vw;
 }
 
@@ -72,7 +73,7 @@ p {
 
 .logos {
 	display: grid;
-	grid-row: span 2;
+	/* grid-row: span 2; */
 }
 
 .logos > img {
@@ -150,7 +151,7 @@ p {
 	}
 	
 	.cards > p {
-		font-size: 2vh;
+		font-size: 3vh;
 		padding: 0 2em;
 	}
 
@@ -162,16 +163,12 @@ p {
 		font-size: 1.5vw;
 	}
 
-	.flexible {
-		grid-template-rows: 2fr 3fr 1fr 1fr;
-	}
-
 	.flexible:hover > .languages:not(:hover) > h3{
 		color: #202020;
 	}
 
 	.creative {
-		grid-template-rows: 1fr 1fr 1fr 1fr;
+		grid-template-rows: repeat(3, fit-content(25vh));
 	}
 
 	.creative > p {
@@ -191,6 +188,6 @@ p {
 	}
 
 	.problem {
-		grid-template-rows: 1fr 1fr !important;
+		grid-template-rows: repeat(2, fit-content(25vh)) !important;
 	}
 }
