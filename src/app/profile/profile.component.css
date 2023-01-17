@@ -43,7 +43,7 @@
 	width: fit-content;
 	max-width: 100%;
 	background-color: #202020;
-	font-size: min(5vw,4vh);
+	font-size: min(5vw, 4vh);
 	color: white;
 	transition: all 1s ease-in-out;
 	white-space: nowrap;
@@ -83,15 +83,23 @@
 
 .presentation > div > h1 {
 	margin: 1em auto;
-	font-family: 'Exo 2', sans-serif;
+	font-family: "Exo 2", sans-serif;
 	font-weight: 700;
 	font-size: 5vh;
 }
 
 .presentation > div > p {
 	text-indent: 2em;
-	font-family: 'Exo 2', sans-serif;
-	font-size: 3vh;
+	font-family: "Exo 2", sans-serif;
+	font-size: 2vh;
 	font-weight: 200;
 	text-align: justify;
+	text-justify: auto;
+	padding: 0 1em;
+}
+
+@media (min-aspect-ratio: 1/1) {
+	.presentation > div > p {
+		font-size: 3vh;
+	}
 }

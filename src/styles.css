@@ -30,4 +30,5 @@ body {
 p {
 	font-family: "Exo 2", sans-serif;
 	font-weight: 200;
+	text-justify: distribute;
 }
